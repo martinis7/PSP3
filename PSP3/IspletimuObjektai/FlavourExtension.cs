@@ -20,7 +20,7 @@ namespace PSP3.IspletimuObjektai
         //}
 
         string GetDescription();
-        decimal GetCost();
+        decimal GetCost(decimal price);
 
     }
 }

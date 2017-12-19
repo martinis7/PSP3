@@ -8,7 +8,7 @@ namespace PSP3.Dekoratorius
 {
     class StrawberryIceCream : ToppingDecorator
     {
-        public StrawberryIceCream(IceCream newICeCream) : base(newICeCream)
+        public StrawberryIceCream(IceCreamMaker newICeCream) : base(newICeCream)
         {
             addScoop();
         }
@@ -21,6 +21,12 @@ namespace PSP3.Dekoratorius
         public override decimal GetCost()
         {
             return DecoratedIceCream.GetCost() + 0.36M;
+        }
+
+        public override void printsmth()
+        {
+            GetPlainIceCream().printsmth();
+            Console.WriteLine("Strawberry");
         }
 
         public void addScoop()

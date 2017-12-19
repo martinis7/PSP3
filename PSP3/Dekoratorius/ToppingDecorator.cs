@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PSP3.Dekoratorius
 {
-    abstract class ToppingDecorator : IceCream
+    abstract class ToppingDecorator : IceCreamMaker
     {
-        protected IceCream DecoratedIceCream;
+        protected IceCreamMaker DecoratedIceCream;
 
-        protected ToppingDecorator(IceCream newIceCream)
+        protected ToppingDecorator(IceCreamMaker newIceCream)
         {
             DecoratedIceCream = newIceCream;
         }
@@ -24,6 +24,11 @@ namespace PSP3.Dekoratorius
             return DecoratedIceCream.GetCost();
         }
 
+        public IceCreamMaker GetDecoratedIceCreamMaker()
+        {
+            return DecoratedIceCream;
+        }
+
         public T GetRole<T>() where T : ToppingDecorator
         {
             if (this is T)
@@ -35,10 +40,10 @@ namespace PSP3.Dekoratorius
             return null;
         }
 
-        public IceCream RemoveRole<T>() where T : IceCream
+        public IceCreamMaker RemoveRole<T>()
         {
             if (this is T)
-                return DecoratedIceCream;
+                return this;
 
             if (DecoratedIceCream is T)
             {
@@ -51,5 +56,20 @@ namespace PSP3.Dekoratorius
 
             return this;
         }
+
+        public IceCreamMaker GetPlainIceCream()
+        {
+            if (DecoratedIceCream is ToppingDecorator)
+            {
+                return ((ToppingDecorator)DecoratedIceCream).GetPlainIceCream();
+            }
+            return DecoratedIceCream;
+        }
+
+        public override void printsmth()
+        {
+            DecoratedIceCream.printsmth();
+        }
+
     }
 }

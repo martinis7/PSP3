@@ -46,7 +46,7 @@
     <Compile Include="Dekoratorius\StrawberryIceCream.cs" />
     <Compile Include="Dekoratorius\VanillaIceCream.cs" />
     <Compile Include="Dekoratorius\ChocolateIceCream.cs" />
-    <Compile Include="Dekoratorius\IceCream.cs" />
+    <Compile Include="Dekoratorius\IceCreamMaker.cs" />
     <Compile Include="Dekoratorius\PlainIceCream.cs" />
     <Compile Include="Dekoratorius\ToppingDecorator.cs" />
     <Compile Include="IspletimuObjektai\ChocolateIceCream.cs" />
@@ -62,9 +62,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Dekoratorius\PSP3_decorator.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

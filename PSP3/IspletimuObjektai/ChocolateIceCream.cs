@@ -13,9 +13,9 @@ namespace PSP3.IspletimuObjektai
                 return ", šokoladinis kaušelis";
             }
 
-            public decimal GetCost()
+            public decimal GetCost(decimal price)
             {
-                return 0.5M;
+                return price + 0.5M;
             }
 
     }

@@ -31,12 +31,12 @@ namespace PSP3.IspletimuObjektai
 
         public decimal GetCost()
         {
-            decimal value = 0;
+            decimal value = iceCreamPrice;
             foreach (var ext in extensions.Values)
             {
-                value += ext.GetCost();
+                value = ext.GetCost(value);
             }
-            return value + iceCreamPrice;
+            return value ;
         }
 
         public FlavourExtension getExtension(string extName)

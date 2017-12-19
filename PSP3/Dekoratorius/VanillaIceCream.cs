@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PSP3.IspletimuObjektai;
 
 namespace PSP3.Dekoratorius
 {
@@ -10,7 +11,7 @@ namespace PSP3.Dekoratorius
     {
         private const decimal scoopPrice = 0.45M;
 
-        public VanillaIceCream(IceCream newICeCream) : base(newICeCream)
+        public VanillaIceCream(IceCreamMaker newICeCream) : base(newICeCream)
         {
             addScoop();
         }
@@ -24,6 +25,11 @@ namespace PSP3.Dekoratorius
         {
             return DecoratedIceCream.GetCost() + (getScoopCount() * scoopPrice);
         }
+
+        //public override void printsmth()
+        //{
+        //    GetPlainIceCream().printsmth();
+        //}
 
         public void addScoop()
         {

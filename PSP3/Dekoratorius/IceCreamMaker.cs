@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSP3.Dekoratorius
 {
-    public abstract class IceCream
+    public abstract class IceCreamMaker
     {
         private int scoopCount;
         public abstract string GetDescription();
@@ -21,5 +21,7 @@ namespace PSP3.Dekoratorius
         {
             scoopCount = n;
         }
+
+        public abstract void printsmth();
     }
 }

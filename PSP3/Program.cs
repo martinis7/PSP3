@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using PSP3.Dekoratorius;
 using PSP3.IspletimuObjektai;
-using IceCream = PSP3.Dekoratorius.IceCream;
+using ChocolateIceCream = PSP3.Dekoratorius.ChocolateIceCream;
+//using PSP3.IspletimuObjektai;
+using IceCreamMaker = PSP3.Dekoratorius.IceCreamMaker;
 using PlainIceCream = PSP3.Dekoratorius.PlainIceCream;
 using VanillaIceCream = PSP3.Dekoratorius.VanillaIceCream;
 
@@ -13,36 +15,42 @@ class Program
     {
         static void Main(string[] args)
         {
-            //PSP3.Dekoratorius.IceCream demoIceCream = new PSP3.Dekoratorius.VanillaIceCream(new PlainIceCream());
-            //Spausdinti(demoIceCream);
 
-            //((ToppingDecorator)demoIceCream).GetRole<VanillaIceCream>().addScoop();
-            //Spausdinti(demoIceCream);
-
-            //demoIceCream = ((ToppingDecorator)demoIceCream).RemoveRole<VanillaIceCream>();
-            //Spausdinti(demoIceCream);
-
-            Console.WriteLine("Išplėtimų objektai:");
-            PSP3.IspletimuObjektai.IceCream ledas = new PSP3.IspletimuObjektai.PlainIceCream();
-            Console.WriteLine(ledas.GetCost());
-            Console.WriteLine(ledas.GetDescription());
-            ledas.addExtension("vanilinis", new PSP3.IspletimuObjektai.VanillaIceCream());
-            Console.WriteLine(ledas.GetCost());
-            Console.WriteLine(ledas.GetDescription());
-            ledas.addExtension("sokoladinis", new PSP3.IspletimuObjektai.ChocolateIceCream());
-            Console.WriteLine(ledas.GetCost());
-            Console.WriteLine(ledas.GetDescription());
-            FlavourExtension vaniliniai = ledas.getExtension("vanilinis");
-            Console.WriteLine(vaniliniai.GetCost());
-            ledas.removeExtension("sokoladinis");
-            Console.WriteLine(ledas.GetCost());           
-        }
+        PSP3.Dekoratorius.IceCreamMaker demoIceCream = new PlainIceCream();
+        demoIceCream.printsmth();
+        demoIceCream = new ChocolateIceCream(new PSP3.Dekoratorius.StrawberryIceCream(demoIceCream));
+        demoIceCream.printsmth();
 
 
 
+        Spausdinti(demoIceCream);
+
+        demoIceCream = ((ToppingDecorator)demoIceCream).RemoveRole<ChocolateIceCream>();
+        //ToppingDecorator.RemoveRole(demoIceCream);
+        Spausdinti(demoIceCream);
 
 
-        public static void Spausdinti(IceCream ledai)
+        Console.WriteLine("Išplėtimų objektai:");
+        PSP3.IspletimuObjektai.IceCream ledas = new PSP3.IspletimuObjektai.PlainIceCream();
+        Console.WriteLine(ledas.GetCost());
+        Console.WriteLine(ledas.GetDescription());
+        ledas.addExtension("vanilinis", new PSP3.IspletimuObjektai.VanillaIceCream());
+        Console.WriteLine(ledas.GetCost());
+        Console.WriteLine(ledas.GetDescription());
+        ledas.addExtension("sokoladinis", new PSP3.IspletimuObjektai.ChocolateIceCream());
+        Console.WriteLine(ledas.GetCost());
+        Console.WriteLine(ledas.GetDescription());
+        FlavourExtension vaniliniai = ledas.getExtension("vanilinis");
+        //Console.WriteLine(vaniliniai.GetCost());
+        ledas.removeExtension("sokoladinis");
+        Console.WriteLine(ledas.GetCost());
+    }
+
+
+
+
+
+    public static void Spausdinti(IceCreamMaker ledai)
         {
             Console.WriteLine("Ingridientai:" + ledai.GetDescription());
             Console.WriteLine("Kaina:" + ledai.GetCost());
